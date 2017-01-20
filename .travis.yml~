@@ -26,12 +26,10 @@ os:
   - osx
 
 language: cpp
-
 compiler:
   - gcc
   - clang
-
 script:
-  - mkdir build
-  - cd build
-  - cmake .. && make
+    - mkdir build
+    - cd build
+    - cmake .. && make
