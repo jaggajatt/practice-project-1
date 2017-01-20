@@ -1,3 +1,26 @@
+# Copied from Google Test .travis.yml
+
+# Build matrix / environment variable are explained on:
+# http://about.travis-ci.org/docs/user/build-configuration/
+# This file can be validated on:
+# http://lint.travis-ci.org/
+
+before_install:
+ - sudo apt-get -qq update
+ - sudo apt-get install -y libgtest-dev
+ - sudo wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz
+ - sudo tar xf release-1.7.0.tar.gz
+ - cd googletest-release-1.7.0
+ - sudo cmake -DBUILD_SHARED_LIBS=ON .
+ - sudo make
+ - sudo cp -a include/gtest /usr/include
+ - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
+ - cd "${TRAVIS_BUILD_DIR}"
+before_script:
+ - pwd
+ - cd samples/STL/
+ - pwd
+ - which sh
 install:
 # /usr/bin/gcc is 4.6 always, but gcc-X.Y is available.
 - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
@@ -23,14 +46,13 @@ addons:
     - valgrind
 os:
   - linux
-  - osx
-
+# Commenting osx because build takes too long time.
+# Detrimental during learning.
+#  - osx
 language: cpp
-
 compiler:
   - gcc
   - clang
-
 script:
   - mkdir build
   - cd build
