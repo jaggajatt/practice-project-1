@@ -6,7 +6,8 @@ set (ProjectX_VERSION_MAJOR 1)
 set (ProjectX_VERSION_MINOR 0)
 
 # Turn ON c++1y
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+# Doesn't work with Travis CI
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 
 # CMake Build Type
 set(CMAKE_BUILD_TYPE Release)
