@@ -1,9 +1,5 @@
-# Copied from Google Test .travis.yml
-
-# Build matrix / environment variable are explained on:
-# http://about.travis-ci.org/docs/user/build-configuration/
-# This file can be validated on:
-# http://lint.travis-ci.org/
+# Copied from here for unit testing.
+# https://github.com/easylogging/easyloggingpp/blob/master/.travis.yml
 
 before_install:
  - sudo apt-get -qq update
@@ -18,9 +14,14 @@ before_install:
  - cd "${TRAVIS_BUILD_DIR}"
 before_script:
  - pwd
- - cd samples/STL/
- - pwd
- - which sh
+
+# Copied from Google Test .travis.yml
+
+# Build matrix / environment variable are explained on:
+# http://about.travis-ci.org/docs/user/build-configuration/
+# This file can be validated on:
+# http://lint.travis-ci.org/
+
 install:
 # /usr/bin/gcc is 4.6 always, but gcc-X.Y is available.
 - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
