@@ -58,3 +58,5 @@ script:
   - mkdir build
   - cd build
   - cmake .. && make
+  - ./main_exe
+  - ./test_exe
