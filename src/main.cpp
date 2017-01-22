@@ -1,5 +1,5 @@
 #include <iostream>
-#include "sum.cpp"
+#include <sum.h>
 #include <cstdlib>
 
 int main(int argc, char** argv){
