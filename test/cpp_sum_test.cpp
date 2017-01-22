@@ -1,10 +1,10 @@
 #include "gtest/gtest.h"
-#include <sum.h>
+#include <calculator.h>
 
-TEST(cpp_sum_test, check_equal_int){
-    using pp::Sum;
-    Sum<int> sum;
-    EXPECT_EQ(sum.add(2, 1), 3);
+TEST(cpp_add_test, check_equal_int){
+    using pp::Calculator;
+    Calculator<int> cal;
+    EXPECT_EQ(cal.add(2, 1), 3);
 }
 
 
