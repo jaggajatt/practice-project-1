@@ -2,6 +2,8 @@
 #define PRACTICEPROJECT1_CALCULATOR_H
 
 #include <iostream>
+#include <cmath>
+#include <limits>
 
 /**
  * pp is `practice-project-1` workspace.
@@ -33,16 +35,16 @@ class Calculator{
 		 * @return     sum of `a` and `b`.
 		 */
         T add(T a, T b);
-        /**
-		 * @brief      Performs substraction.
-		 *
-		 * @param[in]  a     parameter_1
-		 * @param[in]  b     parameter_2
-		 *
-		 * @tparam     T     template class.
-		 *
-		 * @return     multiplication of `a` and `b`.
-		 */
+      	/**
+      	 * @brief      Performs substraction.
+      	 *
+      	 * @param[in]  a     parameter_1
+      	 * @param[in]  b     parameter_2
+      	 *
+      	 * @tparam     T     template class.
+      	 *
+      	 * @return     multiplication of `a` and `b`.
+      	 */
         T subtract(T a, T b);
 		/**
 		 * @brief      Performs multiplication.
