@@ -30,5 +30,8 @@
 
 # Added by me
 build
+docs/html/*
+docs/latex/*
+!docs/latex/refman.pdf
 *~
 *.swp
