@@ -11,11 +11,20 @@ enable_testing()
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
+# Gather file names
+file(GLOB TEST_FILES "test/*.cxx" "test/*.cpp")
+file(GLOB SOURCE_FILES "src/*.cpp")
+file(GLOB INCLUDE_FILES "include/*.h" "include/*.hpp")
+
+# Include the directories
+set(PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+include_directories("${PROJECT_INCLUDE_DIR}")
+
 # Project Directory
 set(PROJECT_TEST_NAME "test_exe")
 
-file(GLOB TEST_FILES "test/*.cxx" "test/*.cpp")
-add_executable(${PROJECT_TEST_NAME} ${TEST_FILES})
+# Create the executable for testing
+add_executable(${PROJECT_TEST_NAME} ${TEST_FILES} ${SOURCE_FILES})
 target_link_libraries(${PROJECT_TEST_NAME} ${GTEST_BOTH_LIBRARIES} pthread)
 
 add_test(${PROJECT_TEST_NAME} ${PROJECT_TEST_NAME})
@@ -27,13 +36,5 @@ add_test(${PROJECT_TEST_NAME} ${PROJECT_TEST_NAME})
 # CMake Build Type
 set(CMAKE_BUILD_TYPE Release)
 
-# Get the file names
-file(GLOB SOURCE "src/*.cxx" "src/*.cpp")
-file(GLOB INCLUDE "include/*.h" "include/*.hpp")
-
-# Include the directories
-set(PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
-include_directories("${PROJECT_INCLUDE_DIR}")
-
-# Uncomment to create executable
-add_executable(main_exe ${SOURCE})
+# Create the executable for main
+add_executable(main_exe "src/main.cxx" ${SOURCE_FILES})

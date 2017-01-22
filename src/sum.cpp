@@ -2,7 +2,7 @@
 
 template <typename T>
 pp::Sum<T>::Sum(){
-    std::cout << "Hello World" << std::endl;    
+    std::cout << "Class instantiated." << std::endl;    
 }
 
 template <typename T>

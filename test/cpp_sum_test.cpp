@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../src/sum.cpp"
+#include <sum.h>
 
 TEST(cpp_sum_test, check_equal_int){
     using pp::Sum;
