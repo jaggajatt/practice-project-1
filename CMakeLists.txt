@@ -16,10 +16,10 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # Gather file names
-file(GLOB TEST_FILES "test/*.cxx" "test/*.cpp")
-file(GLOB SOURCE_FILES "src/*cxx" "src/*.cpp")
-file(GLOB SOURCE_FILES_TEST "src/*.cpp")
-file(GLOB INCLUDE_FILES "include/*.h" "include/*.hpp")
+file(GLOB PROJECT_TEST_FILES "test/*.cxx" "test/*.cpp")
+file(GLOB PROJECT_SOURCE_FILES_MAIN "src/*cxx" "src/*.cpp")
+file(GLOB PROJECT_SOURCE_FILES_TEST "src/*.cpp")
+file(GLOB PROJECT_INCLUDE_FILES "include/*.h" "include/*.hpp")
 
 # Include the directories
 set(PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
@@ -29,7 +29,7 @@ include_directories("${PROJECT_INCLUDE_DIR}")
 set(PROJECT_TEST_NAME "test_exe")
 
 # Create the executable for testing
-add_executable(${PROJECT_TEST_NAME} ${TEST_FILES} ${SOURCE_FILES_TEST})
+add_executable(${PROJECT_TEST_NAME} ${PROJECT_TEST_FILES} ${PROJECT_SOURCE_FILES_TEST})
 target_link_libraries(${PROJECT_TEST_NAME} ${GTEST_BOTH_LIBRARIES} pthread)
 
 add_test(${PROJECT_TEST_NAME} ${PROJECT_TEST_NAME})
@@ -39,4 +39,4 @@ add_test(${PROJECT_TEST_NAME} ${PROJECT_TEST_NAME})
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 
 # Create the executable for main
-add_executable(main_exe ${SOURCE_FILES})
+add_executable(main_exe ${PROJECT_SOURCE_FILES_MAIN})
