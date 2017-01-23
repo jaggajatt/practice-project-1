@@ -5,6 +5,14 @@
 #include <cmath>
 #include <limits>
 
+namespace pp{
+	template <typename T>
+	class Calculator;
+
+	template <typename T>
+	std::ostream& operator<<(std::ostream& ostream, const pp::Calculator<T>& cal);
+}
+
 /**
  * pp is `practice-project-1` workspace.
  */
@@ -24,6 +32,7 @@ class Calculator{
 		 * @tparam     T     template class.
 		 */
         Calculator();
+ 
         /**
 		 * @brief      Perform additions.
 		 *
@@ -35,6 +44,7 @@ class Calculator{
 		 * @return     sum of `a` and `b`.
 		 */
         T add(T a, T b);
+
       	/**
       	 * @brief      Performs substraction.
       	 *
@@ -46,6 +56,7 @@ class Calculator{
       	 * @return     multiplication of `a` and `b`.
       	 */
         T subtract(T a, T b);
+
 		/**
 		 * @brief      Performs multiplication.
 		 *
@@ -57,6 +68,7 @@ class Calculator{
 		 * @return     multiplication of `a` and `b`.
 		 */
          T mul(T a, T b);
+
 		 /**
 		 * @brief      Performs division.
 		 *
@@ -68,6 +80,17 @@ class Calculator{
 		 * @return     division of `a` and `b`.
 		 */
         T divide(T a, T b);
+
+        /**
+         * @brief      Just displays some information about the class.
+         *
+         * @param      ostream  The output stream
+         * @param[in]  cal      The cal object
+         *
+         * @return     output stream.
+         */
+        template <typename U>
+		friend std::ostream& pp::operator<<(std::ostream& ostream, const pp::Calculator<U>& cal);
 };
 
 }
