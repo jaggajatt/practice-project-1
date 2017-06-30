@@ -1,6 +1,14 @@
 # Copied from here for unit testing.
 # https://github.com/easylogging/easyloggingpp/blob/master/.travis.yml
 
+branches:
+  only:
+    - master
+
+env:
+  global:
+    - GH_REPO_REF: github.com/jaggajatt/practice-project-1.git
+
 before_install:
  - sudo apt-get -qq update
  - sudo apt-get install -y libgtest-dev
@@ -45,6 +53,12 @@ addons:
     - g++-4.9
     - clang-3.7
     - valgrind
+    - doxygen
+    - doxygen-doc
+    - doxygen-latex
+    - doxygen-gui
+    - graphviz
+
 os:
   - linux
 # Commenting osx because build takes too long time. Was once successful. 
@@ -63,3 +77,15 @@ script:
   - cmake .. && make
   - ./main_exe
   - ./test_exe
+  - cd ../docs
+  - doxygen
+
+# Deploy using travis builtin GitHub Pages support
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: $TRAVIS_BUILD_DIR/docs/html
+  github_token: $GITHUB_API_KEY
+  on:
+    branch: master
+
